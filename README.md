@@ -34,5 +34,28 @@ Questo documento ha come scopo dare le linee guida per sviluppare il gioco, in m
 - git pull \<nomeRepository> \<nomeBranch>: aggiorna il repository locale con i nuovi progressi trovati su nomeRepository nel branch specificato
 - git push \<nomeRepository> \<nomeBranch>: manda al repository remoto nomeRepository sul branch nomeBranch le modifiche del repository locale
 ### Flusso di lavoro
-
-### 
+- Fase iniziale:
+	- Andare nella directory dove si trova il progetto e aprire git. È possibile farlo da terminale o con l'esplora file e premere tasto destro
+	![Immagine di supporto](file_explorer_right_click.png)
+	- Fare il comando git pull origin master (git può essere lasciato aperto)
+	- Aprire il progetto direttamente con Unity
+- Fase intermedia:
+	- Lavoro sul progetto. Se si fanno modifiche grandi e varie, è consigliato fare più di una commit, anziché una alla fine. A scelta
+	- Fare git add . per aggiungere nel prossimo salvataggio tutti i file modificati
+	- Fare git commit -m "Un messaggio pieno di significato" per creare il salvataggio
+	- Se non si finisce di lavorare, è possibile continuare dopo, anche senza fare la commit o pushare
+- Fase finale
+	- Una volta fatte tutte le commit e si decide di finire il lavoro, chiudere il progetto da Unity
+	- Fare il comando git push origin master
+		- Se va tutto a buon fine, bene
+		- Invece, se git vi dice no perché su origin ci sono altre modifiche che voi non avete, allora fate git pull origin master
+			- Se tutto va a buon fine, bene. Ora potete fare git push origin master
+			- Altrimenti dovete risolvere i conflitti, aprite col vostro editor di testo i file conflittati e decidete cosa tenere
+			- Una volta risolti i conflitti potete fare git commit -m "Messaggio" e git push origin master
+	- Chiudere git
+### Linee guida di programmazione
+- I nomi delle classi devono essere scritti in PascalCase, quindi prima lettera maiuscola e solo lettere dell'alfabeto
+- Nomi delle variabili:
+	- Nomi sensati e significativi, anche se sono un po' lunghi (usate il buonsenso). Quindi myVar o aA non vanno bene, enemyDexterity sì
+	- Utilizzate il camelCase, quindi lettere dell'alfabeto e ogni parola ha una lettera maiuscola, tranne la prima
+- I nomi delle funzioni devono utilizzare lo snake_case, quindi tutte lettere minuscole e _ al posto degli spazi
