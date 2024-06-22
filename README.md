@@ -35,16 +35,22 @@ Questo documento ha come scopo dare le linee guida per sviluppare il gioco, in m
 - git push \<nomeRepository> \<nomeBranch>: manda al repository remoto nomeRepository sul branch nomeBranch le modifiche del repository locale
 ### Flusso di lavoro
 - Fase iniziale:
-	- Andare nella directory dove si trova il progetto e aprire git. È possibile farlo da terminale o con l'esplora file e premere tasto destro
-	![Immagine di supporto](file_explorer_right_click.png)
-	- Fare il comando git pull origin master (git può essere lasciato aperto)
-	- Aprire il progetto direttamente con Unity
+	- Aprire Unity e cliccare "Show in Explorer" dai tre puntini sul progetto
+	
+	<img src="show_in_explorer_unity.png" alt="Immagine di supporto" width="284" height="141"/>
+	
+	- Aprire git premendo tasto destro nell'esplora file, dentro la cartella del progetto
+	
+	<img src="file_explorer_right_click.png" alt="Immagine di supporto" width="408" height="232"/>
+	
+	- Fare il comando git pull origin master
+	- Aprire il progetto con Unity (git può essere lasciato aperto)
 - Fase intermedia:
 	- Lavoro sul progetto. Se si fanno modifiche grandi e varie, è consigliato fare più di una commit, anziché una alla fine. A scelta
 	- Fare git add . per aggiungere nel prossimo salvataggio tutti i file modificati
 	- Fare git commit -m "Un messaggio pieno di significato" per creare il salvataggio
 	- Se non si finisce di lavorare, è possibile continuare dopo, anche senza fare la commit o pushare
-- Fase finale
+- Fase finale:
 	- Una volta fatte tutte le commit e si decide di finire il lavoro, chiudere il progetto da Unity
 	- Fare il comando git push origin master
 		- Se va tutto a buon fine, bene
@@ -54,8 +60,10 @@ Questo documento ha come scopo dare le linee guida per sviluppare il gioco, in m
 			- Una volta risolti i conflitti potete fare git commit -m "Messaggio" e git push origin master
 	- Chiudere git
 ### Linee guida di programmazione
+- Tutti i nomi devono essere sensati e, possibilmente, non ambigui
 - I nomi delle classi devono essere scritti in PascalCase, quindi prima lettera maiuscola e solo lettere dell'alfabeto
-- Nomi delle variabili:
-	- Nomi sensati e significativi, anche se sono un po' lunghi (usate il buonsenso). Quindi myVar o aA non vanno bene, enemyDexterity sì
-	- Utilizzate il camelCase, quindi lettere dell'alfabeto e ogni parola ha una lettera maiuscola, tranne la prima
-- I nomi delle funzioni devono utilizzare lo snake_case, quindi tutte lettere minuscole e _ al posto degli spazi
+- I nomi di variabili e funzioni devono essere scritti in camelCase, ma le variabili in inglese, mentre le funzioni in italiano
+- Scrivere il codice lasciando linee vuote ogni tanto, in maniera più o meno sensata, per aumentarne la leggibilità
+- Possibilmente, non andare subito a capo non le parentesi graffe
+- Se Unity vi suggerisce delle modifiche nello stile del codice, mandatale sul gruppo (se non sono già capitate)
+- I commenti sono ben accetti :D
