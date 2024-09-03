@@ -14,6 +14,7 @@ public class Player : MonoBehaviour{
     public float speedMultiplier = 10.0f;
     private Animator animator;
     private string a_name;
+    public static float[] player_pos= { 0, 0, 0 };
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,9 @@ public class Player : MonoBehaviour{
     // Update is called once per frame
     void Update()
     {
+        player_pos[0] = transform.position.x;
+        player_pos[1] = transform.position.y;
+        player_pos[2] = transform.position.z;
         if (Input.GetKeyDown(KeyCode.P))
         {
             if (PG == "W_")
