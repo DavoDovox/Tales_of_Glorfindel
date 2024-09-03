@@ -8,8 +8,8 @@ public class Player : MonoBehaviour{
     public Enums enums;
     public string PG;
     byte[] stats = {0, 0, 0, 0, 0};
-    public float health;
-    public Rigidbody2D rb;
+    public static float health;
+    public static Rigidbody2D rb;
     Vector2 velocity;
     public float speedMultiplier = 10.0f;
     private Animator animator;
@@ -22,6 +22,7 @@ public class Player : MonoBehaviour{
         animator = GetComponent<Animator>();
         PG = "W_";
         health = 100;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     

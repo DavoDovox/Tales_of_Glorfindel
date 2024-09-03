@@ -55,6 +55,27 @@ public class Slime : MonoBehaviour
         
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Collision");
+
+        // Decrease player's health
+        Player.health -= 2;
+
+        if (Player.health > 0)
+        {
+            // Calculate direction from slime to player
+            Vector2 direction = (Player.rb.position - (Vector2)transform.position).normalized;
+
+            // Push the player away from the slime
+            float pushStrength = 5f;
+            Vector2 push = direction * pushStrength;
+
+            // Apply force to the player
+            Player.rb.AddForce(push, ForceMode2D.Impulse);
+        }
+    }
+
 
     // Update is called once per frame
     void Update()
