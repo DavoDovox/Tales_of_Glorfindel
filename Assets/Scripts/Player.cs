@@ -14,11 +14,14 @@ public class Player : MonoBehaviour{
     public float speedMultiplier = 10.0f;
     private Animator animator;
     private string a_name;
+    Vector2 j_vel;
     public static float[] player_pos= { 0, 0, 0 };
 
     // Start is called before the first frame update
     void Start()
     {
+        j_vel.x=0;
+        j_vel.y = 0;
         animator = GetComponent<Animator>();
         PG = "W_";
         health = 100;
@@ -44,6 +47,8 @@ public class Player : MonoBehaviour{
         velocity.y = Input.GetAxisRaw("Vertical");
         if (Input.GetKeyDown(KeyCode.LeftShift))
             speedMultiplier = 15.0f;
+        if (Input.GetKeyDown(KeyCode.Space))
+            StartCoroutine(Jump());
         if (Input.GetKeyUp(KeyCode.LeftShift))
                 speedMultiplier = 10.0f;
         if (velocity.x == 0 && velocity.y == 0){
@@ -67,6 +72,17 @@ public class Player : MonoBehaviour{
                 Animation_update(PG + "walking_S");
         }
     }
+    
+    IEnumerator Jump()
+    {
+        j_vel.y += 0.75f;
+        for(int i = 0; i < 50; i++)
+        {
+            j_vel.y -= 0.03f;
+            yield return new WaitForSeconds(0.01f);
+        }
+        j_vel.y += 0.75f;
+    }
 
     void Animation_update(string name)
     {
@@ -77,7 +93,7 @@ public class Player : MonoBehaviour{
     }
 
     void FixedUpdate(){
-        rb.MovePosition(rb.position + velocity * speedMultiplier * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + j_vel + velocity * speedMultiplier * Time.fixedDeltaTime);
     }
 
     

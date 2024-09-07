@@ -10,6 +10,7 @@ public class Slime : MonoBehaviour
     public float speedMultiplier = 5.0f;
     public Rigidbody2D rb;
     private Animator animator;
+    private bool knock_back;
     // Start is called before the first frame update
     float sqrt(float N)
     {
@@ -24,6 +25,7 @@ public class Slime : MonoBehaviour
     }
     void Start()
     {
+        knock_back = false;
         animator = GetComponent<Animator>();
         velocity.x = 0;
         velocity.y = 0;
@@ -48,6 +50,12 @@ public class Slime : MonoBehaviour
                 rb.MovePosition(rb.position + vel * speedMultiplier * Time.fixedDeltaTime);
                 vel.y -= 0.125f;
                 yield return new WaitForSeconds(0.01f);
+                if (knock_back)
+                {
+                    vel.x = -1.3f*vel.x;
+                    vel.y -= 1.3f*velocity.y;
+                    knock_back = false;
+                }
             }
             yield return new WaitForSeconds(0.59f);
 
@@ -58,7 +66,7 @@ public class Slime : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("Collision");
-
+        knock_back = true;
         // Decrease player's health
         Player.health -= 2;
 
